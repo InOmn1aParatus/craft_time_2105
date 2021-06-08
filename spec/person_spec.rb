@@ -26,5 +26,9 @@ RSpec.describe Person do
       @person.add_supply('scissors', 1)
       expect(@person.supplies).to eq({"fabric"=>4, "scissors"=>1})
     end
+
+    it 'determines if person can craft' do
+      expect(@hector.can_build?).to eq(false)
+    end
   end
 end

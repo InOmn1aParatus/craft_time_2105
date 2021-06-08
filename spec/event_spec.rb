@@ -38,5 +38,10 @@ RSpec.describe Event do
     it 'returns craft with greatest supply requirements' do
       expect(@event.craft_with_most_supplies).to eq('sewing')
     end
+
+    it 'returns array with necessary supplies for event' do
+      # require 'pry'; binding.pry
+      expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
+    end
   end
 end
