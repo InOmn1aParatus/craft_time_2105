@@ -22,7 +22,7 @@ class Event
   def supply_list
     list = []
     @crafts.each do |craft|
-      craft.supplies_required.keys.map do |key|
+      craft.supplies_required.keys.each do |key|
         list << key.to_s
       end
     end
