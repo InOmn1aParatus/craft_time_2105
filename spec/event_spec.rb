@@ -21,4 +21,8 @@ RSpec.describe Event do
       expect(event.attendees).to eq([person])
     end
   end
+
+  describe 'methods' do
+    
+  end
 end

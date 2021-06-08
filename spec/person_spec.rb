@@ -15,4 +15,16 @@ RSpec.describe Person do
       expect(person.supplies).to eq({})
     end
   end
+
+  describe 'methods' do
+    before :each do
+      @person = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
+    end
+    
+    it 'adds supplies to person' do
+      @person.add_supply('fabric', 4)
+      @person.add_supply('scissors', 1)
+      expect(@person.supplies).to eq({"fabric"=>4, "scissors"=>1})
+    end
+  end
 end
