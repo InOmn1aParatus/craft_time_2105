@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/person'
+require './lib/craft'
 
 RSpec.describe Person do
   describe 'instantiation' do
@@ -28,7 +29,17 @@ RSpec.describe Person do
     end
 
     it 'determines if person can craft' do
-      expect(@hector.can_build?).to eq(false)
+      sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
+      require 'pry'; binding.pry
+      expect(@hector.can_build?(sewing)).to eq(false)
+      
+      @hector.add_supply('fabric', 7)
+      @hector.add_supply('thread', 1)
+      expect(@hector.can_build?(sewing)).to eq(false)
+
+      @hector.add_supply('scissors', 1)
+      @hector.add_supply('sewing_needles', 1)
+      expect(@hector.can_build?(sewing)).to eq(true)
     end
   end
 end

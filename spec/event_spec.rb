@@ -40,7 +40,6 @@ RSpec.describe Event do
     end
 
     it 'returns array with necessary supplies for event' do
-      # require 'pry'; binding.pry
       expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
     end
   end
