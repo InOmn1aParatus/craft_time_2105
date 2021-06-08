@@ -6,4 +6,8 @@ class Person
     @interests = info[:interests]
     @supplies = {}
   end
+
+  def add_supply(supply, quantity)
+    @supplies[supply] = quantity
+  end
 end
