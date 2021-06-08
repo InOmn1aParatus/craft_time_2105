@@ -10,4 +10,8 @@ class Person
   def add_supply(supply, quantity)
     @supplies[supply] = quantity
   end
+
+  def can_build?(craft)
+    
+  end
 end
