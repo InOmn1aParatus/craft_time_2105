@@ -12,6 +12,9 @@ class Person
   end
 
   def can_build?(craft)
-    
+    tools = []
+    quantity = []
+    craft.supplies_required.each do |tool, quantity|
+    end
   end
 end
