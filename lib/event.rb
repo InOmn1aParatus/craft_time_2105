@@ -12,4 +12,10 @@ class Event
       attendee.name
     end
   end
+
+  def craft_with_most_supplies
+    @crafts.max_by do |craft|
+      craft.supplies_required.count
+    end.name
+  end
 end
