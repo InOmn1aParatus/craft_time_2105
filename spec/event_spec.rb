@@ -26,8 +26,10 @@ RSpec.describe Event do
     before :each do
       @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
       @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
+      @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
       @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
       @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
+      @tony = Person.new({name: 'Tony', interests: ['drawing', 'knitting']})
       @event = Event.new("Carla's Craft Connection", [@sewing, @knitting], [@hector, @toni])
     end
 
@@ -41,6 +43,16 @@ RSpec.describe Event do
 
     it 'returns array with necessary supplies for event' do
       expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
+    end
+
+    it 'returns attendees by craft interest' do
+      expected = {
+        'knitting' => [@toni, @@tony],
+        'painting' => [],
+        'sewing' => [@hector, @toni],
+      }
+
+      expect(@event.attendees_by_craft_interest),to eq(expected)
     end
   end
 end
