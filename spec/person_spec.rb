@@ -28,30 +28,20 @@ RSpec.describe Person do
       expect(@person.supplies).to eq({"fabric"=>4, "scissors"=>1})
     end
 
-    it 'converts supply keys to symbols' do
-      @person.add_supply('fabric', 4)
-      @person.add_supply('scissors', 1)
-      expect(@person.supplies.keys).to eq([:fabric, :scissors])
-    end
+    # Ha Ha you tried using helper methods
 
-    it 'compares supply value to craft requirement value' do
+    it 'determines if person can craft' do
+      hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
       sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
-      @person.add_supply('fabric', 4)
-      @person.add_supply('scissors', 1)
-
-    end
-
-    xit 'determines if person can craft' do
-      sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
-      expect(@hector.can_build?(sewing)).to eq(false)
+      expect(hector.can_build?(sewing)).to eq(false)
       
-      @hector.add_supply('fabric', 7)
-      @hector.add_supply('thread', 1)
-      expect(@hector.can_build?(sewing)).to eq(false)
+      hector.add_supply('fabric', 7)
+      hector.add_supply('thread', 1)
+      expect(hector.can_build?(sewing)).to eq(false)
 
-      @hector.add_supply('scissors', 1)
-      @hector.add_supply('sewing_needles', 1)
-      expect(@hector.can_build?(sewing)).to eq(true)
+      hector.add_supply('scissors', 1)
+      hector.add_supply('sewing_needles', 1)
+      expect(hector.can_build?(sewing)).to eq(true)
     end
   end
 end
