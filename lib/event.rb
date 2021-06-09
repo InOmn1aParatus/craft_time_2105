@@ -20,12 +20,20 @@ class Event
   end
 
   def supply_list
-    list = []
+    # list = []
+    # @crafts.each do |craft|
+    #   craft.supplies_required.keys.each do |key|
+    #     list << key.to_s
+    #   end
+    # end
+    # list.uniq
+    supplies = []
     @crafts.each do |craft|
-      craft.supplies_required.keys.each do |key|
-        list << key.to_s
+      craft.supplies_required.each do |type, _|
+        # The above method is preferable because it performs fewer iterations
+        supplies << type.to_s
       end
     end
-    list.uniq
+    supplies.uniq
   end
 end
