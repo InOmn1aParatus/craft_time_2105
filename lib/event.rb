@@ -34,4 +34,14 @@ class Event
       end
     end.uniq
   end
+
+  def attendees_by_craft_interest
+    interests = Hash.new([])
+    @crafts.each do |craft|
+      interests[craft.name] = @attendees.find_all do |attendee|
+        attendee.interests.include?(craft.name)
+      end
+    end
+    interests
+  end
 end
