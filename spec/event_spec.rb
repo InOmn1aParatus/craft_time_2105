@@ -54,5 +54,11 @@ RSpec.describe Event do
       }
       expect(event.attendees_by_craft_interest).to eq(expected)
     end
+
+    it 'lists crafts that use given tool' do
+      event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @tony])
+      expect(event.crafts_that_use('scissors')).to eq([@knitting, @sewing])
+      expect(event.crafts_that_use('fire')).to eq([])
+    end
   end
 end
