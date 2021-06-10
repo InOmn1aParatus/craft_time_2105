@@ -23,7 +23,6 @@ class Event
     # supplies = []
     # @crafts.each do |craft|
     #   craft.supplies_required.each do |type, _|
-    #     # The above method is preferable because it performs fewer iterations
     #     supplies << type.to_s
     #   end
     # end
