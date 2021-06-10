@@ -1,5 +1,5 @@
 require 'rspec'
-require './lib/person'
+# require './lib/person'
 require './lib/craft'
 
 RSpec.describe Craft do
