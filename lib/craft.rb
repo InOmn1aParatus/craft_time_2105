@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Craft
   attr_reader :name, :supplies_required
 

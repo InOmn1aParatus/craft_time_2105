@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   attr_reader :name, :crafts, :attendees
 
@@ -8,9 +10,7 @@ class Event
   end
 
   def attendee_names
-    @attendees.map do |attendee|
-      attendee.name
-    end
+    @attendees.map(&:name)
   end
 
   def craft_with_most_supplies
@@ -28,9 +28,7 @@ class Event
     # end
     # supplies.uniq
     @crafts.flat_map do |craft|
-      craft.supplies_required.keys.map do |supply|
-        supply.to_s
-      end
+      craft.supplies_required.keys.map(&:to_s)
     end.uniq
   end
 
@@ -46,9 +44,7 @@ class Event
 
   def crafts_that_use(tool)
     @crafts.find_all do |craft|
-      craft.supplies_required.keys.map do |type|
-        type.to_s
-      end.include?(tool)
+      craft.supplies_required.keys.map(&:to_s).include?(tool)
     end
   end
 end
