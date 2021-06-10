@@ -44,4 +44,12 @@ class Event
     end
     interests
   end
+
+  def crafts_that_use(tool)
+    @crafts.find_all do |craft|
+      craft.supplies_required.keys.map do |type|
+        type.to_s
+      end.include?(tool)
+    end
+  end
 end
