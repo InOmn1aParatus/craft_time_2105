@@ -30,7 +30,7 @@ RSpec.describe Event do
       @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
       @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
       @tony = Person.new({name: 'Tony', interests: ['drawing', 'knitting']})
-      @event = Event.new("Carla's Craft Connection", [@sewing, @knitting], [@hector, @toni])
+      @event = Event.new("Carla's Craft Connection", [@sewing, @painting, @knitting], [@hector, @toni, @tony])
     end
 
     it 'returns attendee names' do
@@ -45,13 +45,12 @@ RSpec.describe Event do
       expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
     end
 
-    xit 'returns attendees by craft interest' do
+    it 'returns attendees by craft interest' do
       expected = {
         'knitting' => [@toni, @tony],
         'painting' => [],
         'sewing' => [@hector, @toni],
       }
-
       expect(@event.attendees_by_craft_interest).to eq(expected)
     end
   end
